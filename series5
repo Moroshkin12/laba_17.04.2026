@@ -1,0 +1,61 @@
+#series5 Дано целое число N и набор из N положительных вещественных чисел. Вывести в том
+#же порядке целые части всех чисел из данного набора (как вещественные числа с нулевой дробной
+# частью), а также сумму всех целых частей.
+
+def get_positive_integer(prompt):
+    """
+    Запрашивает у пользователя целое положительное число.
+
+    Returns:
+        int: Введённое пользователем целое положительное число.
+    """
+    while True:
+        try:
+            value = int(input(prompt))
+            if value < 0:
+                print("Ошибка! Количество чисел не может быть отрицательным. Попробуйте ещё раз.")
+                continue
+            return value
+        except ValueError:
+            print("Ошибка! Пожалуйста, введите целое число. Попробуйте ещё раз.")
+
+
+
+def get_float_number(prompt):
+    """
+    Запрашивает у пользователя положительное число с плавающей точкой.
+
+    Returns:
+        float: Введённое пользователем положительное число с плавающей точкой.
+    """
+    while True:
+        try:
+            value = float(input(prompt))
+            if value <= 0:  # Проверяем, что число строго больше нуля
+                print("Ошибка! Число должно быть положительным. Попробуйте ещё раз.")
+                continue
+            return value
+        except ValueError:
+            print("Ошибка! Введите корректное число. Попробуйте ещё раз.")
+
+
+
+count = get_positive_integer("Введите N: ")
+total_sum = 0
+numbers_list = []
+
+for i in range(count):
+    input_x = get_float_number("Введите вещественное число: ")
+    integer_x = int(input_x)
+    float_x = float(integer_x)
+    numbers_list.append(float_x)
+    total_sum += integer_x
+
+for number in numbers_list:
+    print(number)
+
+print("Сумма чисел =", total_sum)
+
+
+
+# -1, 2.45, 2 3.2 -3, 2 aaa 3.4
