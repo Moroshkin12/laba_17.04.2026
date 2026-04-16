@@ -1,0 +1,28 @@
+#One 35.  дано натуральное число x (10 000 ≤ x ≤ 99 999).
+# Определить, верно ли, что все цифры числа различны между собой.
+# Необходимо использовать логическую переменную, и в качестве результата вывести её значение.
+
+def Validation(user_input):
+    """
+    Проверяет, что введённое значение — натуральное число в диапазоне 10000 ≤ number ≤ 99999.
+    """
+    while True:
+        try:
+            number = int(user_input)
+            if 10_000 <= number <= 99_999:
+                return number
+            else:
+                print("Ошибка! Введите натуральное число x, 10000 ≤ x ≤ 99999: ")
+                user_input = input("Введите число x: ")
+        except ValueError:
+            print("Ошибка! Введите натуральное число x, 10000 ≤ x ≤ 99999: ")
+            user_input = input("Введите число x: ")
+
+
+input_number = Validation(input("Введите число x: "))
+number_str = str(input_number)
+result = len(number_str) == len(set(number_str))
+print(result)
+
+
+# -2, aaa, 100_000
